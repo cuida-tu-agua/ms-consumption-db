@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.1-tcl-tag-001
+      author: diego
+      comment: goals schema with consumption_goals (HU-023 monthly goal per place, HU-024 progress)
+      changes:
+        - tagDatabase:
+            tag: v1.1-goals

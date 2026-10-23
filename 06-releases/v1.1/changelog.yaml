@@ -1,0 +1,29 @@
+databaseChangeLog:
+# Release v1.1 — BC-05 Consumption Goals: goals.consumption_goals (HU-023/024).
+# Runs AFTER the v1.0 baseline. The goals schema itself is created by sqlserver-init/00-init.sql.
+# Order: tables → FK → role → grants → tag.
+
+  - includeAll:
+      path: 01-ddl/03-tables/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 01-ddl/04-alter/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 03-dcl/00-roles/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 03-dcl/01-grants/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 04-tcl/02-release-tags/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false

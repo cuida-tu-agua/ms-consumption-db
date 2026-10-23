@@ -18,6 +18,11 @@ IF SCHEMA_ID('monitoring') IS NULL
     EXEC('CREATE SCHEMA monitoring');
 GO
 
+-- BC-05 Consumption Goals (release v1.1): its own schema, also owned by consumption-service
+IF SCHEMA_ID('goals') IS NULL
+    EXEC('CREATE SCHEMA goals');
+GO
+
 -- Runtime user for consumption-service
 IF NOT EXISTS (SELECT 1 FROM sys.server_principals WHERE name='consumption_app')
     CREATE LOGIN consumption_app WITH PASSWORD='$(CONSUMPTION_APP_PASSWORD)';
@@ -39,6 +44,7 @@ END
 GO
 
 GRANT CONTROL ON SCHEMA::monitoring TO consumption_migrator;
+GRANT CONTROL ON SCHEMA::goals TO consumption_migrator;
 GRANT CREATE TABLE TO consumption_migrator;
 GRANT CREATE ROLE TO consumption_migrator;
 GRANT ALTER ANY ROLE TO consumption_migrator;
