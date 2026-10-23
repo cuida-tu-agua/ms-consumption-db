@@ -21,6 +21,7 @@ docker compose up                  # sqlserver-init + liquibase update
 | Tag | Contenido |
 |-----|-----------|
 | `v1.0-baseline` | `monitoring.readings` (lecturas crudas, únicas por dispositivo + hora), `monitoring.consumption_hourly` (litros por lugar y hora UTC), FKs, índice de la última lectura, rol `monitoring_rw` |
+| `v1.1-goals` | Schema `goals` (lo crea `00-init.sql`), `goals.consumption_goals`: una meta mensual por lugar y mes, en litros (HU-023/024); FK a `places.places`; rol `goals_rw` (sin DELETE) |
 
 ## Reglas
 
